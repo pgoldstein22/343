@@ -1,0 +1,59 @@
+#########################################################
+# Name:                 Pete Goldstein
+# Language:             Python
+# Purpose:              To practice String manipulation
+# Class:                CSCI C 343
+# Due Date:             5/19/2021
+# Date Last Modified:   5/17/2021
+#########################################################
+
+# import string library
+import string
+
+# remove_punct function
+def remove_punct(sentence):
+
+    # creates a new string var to hold string with punctuation removed
+    new_Sentence = ''
+
+    # for loop to iterate over string passed
+    for char in sentence:
+
+        # if the char is a punctuation character
+        if char in string.punctuation:
+
+            # replace the punctuation character with a string containing one space
+            char = char.replace(char," ")
+
+        # add the char to the end of the new_Sentence
+        new_Sentence = new_Sentence + char
+
+        # return the new_Sentence
+    return new_Sentence
+
+# call the remove_punct function passing our sentence
+# store the results of the function in our sentence function
+#sentence = remove_punct(sentence)
+
+# print the results
+#print(sentence)
+
+def main():
+
+    # object holding our sentence to remove punctuation
+    sentence = "Let's go, Mike. Do you know what time it is? It's almost 2!"
+
+    # print the sentence before removing punctuation
+    print("our sentence before removing punctuation")
+    print(sentence)
+    # call the remove_punct function
+    # store the results in our sentence object
+    sentence = remove_punct(sentence)
+
+    # print our sentence object
+    print("\n\nour sentence after removing punctuation")
+    print(sentence)
+
+
+if __name__ == '__main__':
+    main()
