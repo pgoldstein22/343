@@ -1,0 +1,337 @@
+"""
+Name: Pete Goldstein
+Language: Python
+Course: C343
+Purpose: To practice OOP and inheritance
+Due Date: 5/22/2021
+Date last modified 5/21/2021
+"""
+
+"""
+Animal class
+has the instance variables of 
+_name = string
+_age = int
+has the methods of
+set_name = mutator method for name
+get_name = accessor method for name
+set_age = mutator method for age
+get_age = accessor method for age
+"""
+class Animal():
+
+    """
+    __init__ requires arguments to be passed in the following order
+    1st name, passed as a string
+    2nd age, passes as an int
+    """
+    def __init__(self, name, age):
+        # stores name passed
+        self._name = name
+        self._age = age
+
+    """
+    set_name is a mutator method
+    takes name as an argument to set or change the name
+    
+    name = string
+    """
+    def set_name(self, name):
+        # sets/changes the name of the Animal
+        self._name = name
+        return
+
+    """
+    get_name is an accessor method
+    returns the name of the Animal
+    
+    return value = string
+    """
+    def get_name(self):
+        # return the name of the Animal
+        return self._name
+
+    """
+    set_age is a mutator method passing the age as an argument
+    
+    age = int
+    """
+    def set_age(self, age):
+        # sets/changes the age of the Animal
+        self._age = age
+        return
+
+    """
+   get_age is an accessor method
+   returns the age of the animal
+   
+   return value = int
+    """
+    def get_age(self):
+        # returns the age of the Animal
+        return self._age
+# ------------------------------------------------------------------------
+"""
+Goat class extends the Animal class
+has instance variables of
+_name = string (inherited from Animal class)
+_age = int  (inherited from Animal class)
+_tail = boolean
+has methods of
+set_name = mutator method for name (inherited from Animal class)
+get_name = accessor method for name (inherited from Animal class)
+set_age = mutator method for age (inherited from Animal class)
+get_age = accessor method for age (inherited from Animal class)
+set_tail = mutator method for tail
+get_tail = accessor method for tail
+jump = method to mimic the Goat jumping
+milk = method to mimic the Goat getting milked
+
+"""
+class Goat(Animal):
+
+    """
+    __init__ requires arguments to be passed in order
+    name has to be first as a string
+    age has to be second as an int
+    tail has to be third as a boolean
+    """
+    def __init__(self, name, age, tail):
+        # stores the value passed for tail
+        self._tail = tail
+        # passes name and age to the inherited instance variables
+        # of the Animal class
+        super().__init__(name, age)
+
+    """
+    set_tail method is a mutator for the tail variable
+    the tail argument passed is a boolean value
+    """
+    def set_tail(self, tail):
+        # sets/changes the tail variable
+        self._tail = tail
+        return
+
+    """
+    get_tail method is an accessor method
+    if the goat has a tail or not
+    
+    return value = boolean
+    """
+    def get_tail(self):
+        return self._tail
+
+    """
+    jump method mimics the Goat jumping
+    
+    return value = None
+    """
+    def jump(self):
+        print("JUMP, {}".format(self.get_name()))
+        return
+
+    """
+    milk method mimmics the Goat getting milked
+    """
+    def milk(self):
+        # prints the milk message with the name of the Goat
+        print("Lets MILK {}".format(self.get_name()))
+        return
+# ------------------------------------------------------------------------
+"""
+Pig class extends the Animal class
+has instance variables of
+_name = string (inherited from Animal class)
+_age = int  (inherited from Animal class)
+_nose = boolean
+has methods of
+set_name = mutator method for name (inherited from Animal class)
+get_name = accessor method for name (inherited from Animal class)
+set_age = mutator method for age (inherited from Animal class)
+get_age = accessor method for age (inherited from Animal class)
+set_nose = mutator method for nose
+get_nose = accessor method for nose
+wallow = method to tell the Pig to wallow
+"""
+class Pig(Animal):
+
+    """
+    __init__ requires the arguments to be passed in the following order
+    1st name, passed as a string
+    2nd age, passes as an int
+    3rd nose, passes as a boolean
+    """
+    def __init__(self, name, age, nose):
+        # stores the value passed for nose
+        self._nose = nose
+        # stores name and age to the inherited variables from Animal
+        super().__init__(name, age)
+
+    """
+    set_nose mutator method for nose
+    takes nose as a argument
+    nose = boolean
+    
+    return type = None
+    """
+    def set_nose(self, nose):
+        # set/change nose instance variable
+        self._nose = nose
+        return
+
+    """
+    get_nose returns the value stored in the instance variable nose
+    
+    return type = boolean
+    """
+    def get_nose(self):
+        # return nose
+        return self._nose
+
+    """
+    wallow method tells the Pig to wallow by name
+    
+    return type = None
+    """
+    def wallow(self):
+        # Wallow message
+        print("WALLOW, {}".format(self.get_name()))
+        return
+# ------------------------------------------------------------------------
+"""
+Horse class extends the Animal class
+has instance variables of
+_name = string (inherited from Animal class)
+_age = int  (inherited from Animal class)
+_height = int (height is in inches)
+_color = string
+has methods of
+set_name = mutator method for name (inherited from Animal class)
+get_name = accessor method for name (inherited from Animal class)
+set_age = mutator method for age (inherited from Animal class)
+get_age = accessor method for age (inherited from Animal class)
+set_height = mutator method for height
+get_height = accessor method for height
+jump = method to tell the Horse to jump
+run = method to tell the Horse to run
+"""
+class Horse(Animal):
+
+    """
+    __init__ requires the arguments to be in the following order
+    1st name, passed as a string
+    2nd age, passed as an int
+    3rd height, passed as an int
+    4th color, passed as a string
+    """
+    def __init__(self, name, age, height, color):
+        # stores height in the instance variable _height
+        self._height = height
+        # stores color in the instance variable _color
+        self._color = color
+        # stores name and age in the inherited variables from the Animal class
+        super().__init__(name, age)
+
+    """
+    set_height mutator method for height
+    
+    takes an in as a argument
+    
+    return value = None
+    """
+    def set_height(self, height):
+        # set/change the height of the Horse
+        self._height = height
+        return
+
+    """
+    get_height accessor method for height
+    returns the height of the Horse
+    
+    return value = int
+    """
+    def get_height(self):
+        # returns the height of the horse
+        return self._height
+
+    """
+    set_color is the mutator method for color
+    sets/stores the color of the Horse
+    
+    color = string
+    
+    return value = None
+    """
+    def set_color(self, color):
+        # set/change color of the Horse
+        self._color = color
+        return
+
+    """
+    get_color is the accessor method for color
+    returns the color of the horse
+    
+    return value = string
+    """
+    def get_color(self):
+        # return the color of the Horse
+        return self._color
+    """
+    run method tells the Horse to run by name
+    by printing a message on the console
+    
+    return value = None
+    """
+    def run(self):
+        # run message telling the Horse to run
+        print("RUN RUN RUN, {}".format(self.get_name()))
+        return
+
+    """
+    jump method tells the horse to jump by name
+    by printing a message on the console
+    
+    return value = None
+    """
+    def jump(self):
+        # jump mesage telling the Horse to jump
+        print("JUMP, {}".format(self.get_name()))
+        return
+
+
+class Racer(Horse):
+
+    def __init__(self, name, age, height, color):
+
+        super().__init__(name, age, height, color)
+
+    def race(self):
+
+        print("Race! Faster, {}".format(self.get_name()))
+        return
+
+
+class Equestrian(Horse):
+
+    def __init__(self, name, age, height, color, weight, trained):
+
+        self._weight = weight
+        self._trained = trained
+        super().__init__(name, age, height, color)
+
+    def set_weight(self, weight):
+        self._weight = weight
+
+    def get_weight(self):
+        return self._weight
+
+    def set_trained(self, trained):
+        self._trained = trained
+        return
+
+    def get_trained(self):
+        return self._trained
+
+    def trot(self):
+        print("Trot, {}".format(self.get_name()))
+        return
