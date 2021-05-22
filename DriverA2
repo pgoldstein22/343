@@ -1,0 +1,60 @@
+import Animal
+
+piglet = Animal.Pig("Miss Piggy", 45, True)
+
+goatee = Animal.Goat("Kevin", 26, True)
+
+horsey = Animal.Horse("Mr.Ed", 65, 90, "brown")
+
+fast_horsey = Animal.Racer("Time", 3, 85, "black")
+
+show_horsey = Animal.Equestrian("Kyle", 5, 122, "green", 700, True)
+
+def main():
+
+    # The following code tests the Pig class
+    # Testing the get_name, get_age, get_nose methods of the Pig class
+    print("Testing of the Pig class accessor methods")
+    print("pig name is {}\npig age is {}\npig has nose? {}\n".format(piglet.get_name(),
+                                                                      piglet.get_age(),
+                                                                      piglet.get_nose()))
+
+    # Testing the mutator methods of the Pig class
+    piglet.set_name("Kathy")
+    piglet.set_age(25)
+    piglet.set_nose(False)
+    print("Testing of the Pig class mutator methods")
+    print("pig name is {}\npig age is {}\npig has nose? {}".format(piglet.get_name(),
+                                                                           piglet.get_age(),
+                                                                           piglet.get_nose()))
+
+    # Testing the wallow method
+    print("\ntesting wallow method")
+    piglet.wallow()
+
+    # The following code tests the Goat Class
+
+    print("\nTesting of the Goat class")
+
+    # Testing the accessor Methods
+    print("Testing the Goat class accessor methods")
+    print("Goat name is {}\nGoat age is {}\nGoat has tail? {}\n".format(goatee.get_name(),
+                                                                           goatee.get_age(),
+                                                                           goatee.get_tail()))
+    # Testing of the Goats mutator methods
+    goatee.set_name("Jim")
+    goatee.set_age(17)
+    goatee.set_tail(False)
+    print("Testing of the Goat class mutator methods")
+    print("Goat name is {}\nGoat age is {}\nGoat has tail? {}\n".format(goatee.get_name(),
+                                                                              goatee.get_age(),
+                                                                              goatee.get_tail()))
+
+    # Testing of the Goats jump and milk methods
+    print("Testing the jump method of the Goat Class")
+    goatee.jump()
+    print("Testing the milk method of the Goat Class")
+    goatee.milk()
+
+if __name__ == '__main__':
+    main()
