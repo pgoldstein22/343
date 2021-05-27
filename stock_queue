@@ -1,0 +1,27 @@
+class StockQueue():
+
+    def __init__(self):
+        self._my_Shares = list()
+
+    def enqueue(self, stocks):
+        self._my_Shares.insert(0, stocks)
+
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        return self._my_Shares.pop()
+
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self._my_Shares[-1]
+
+    def size(self):
+        return len(self._my_Shares)
+
+    def is_empty(self):
+        return self._my_Shares == []
+
+    def adjust_head(self,new_value):
+        self._my_Shares[-1] = new_value
+        return
