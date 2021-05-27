@@ -1,0 +1,22 @@
+class PriceStack():
+
+    def __init__(self):
+        self.stock_prices = list()
+
+    def push(self, price):
+        self.stock_prices.append(price)
+        return
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        return self.stock_prices[-1]
+
+    def peek(self):
+
+        if self.is_empty():
+            return None
+        return self.stock_prices[-1]
+
+    def is_empty(self):
+        return self.stock_prices == []
