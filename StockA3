@@ -1,0 +1,60 @@
+import stock_queue
+
+class Stock():
+
+    def __init__(self):
+        self._total_stocks = 0
+        self._prices = stock_queue.StockQueue()
+        self._quantities = stock_queue.StockQueue()
+
+    def purchase_stocks(self, price, quantity):
+        self._prices.enqueue(price)
+        self._quantities.enqueue(quantity)
+        self._total_stocks += quantity
+
+    """
+    _set_price is a method to set the price.
+    It is a private method as the price should never change after purchase
+    
+    Code generated for sake of completeness of the class.
+    
+    """
+    def _set_price(self, price):
+        self._price = price
+        return
+
+    """
+    get_price method returns the price at which the stocks were purchased. 
+    
+    return value : int
+    """
+    def get_first_price_paid(self):
+        return self._prices.peek()
+
+    """
+    set_quantity method changes/sets the quantity
+    
+    this method has been set to private as the quantity should be set at time of purchase
+    
+    This method has only be coded to demonstrate the completeness of the class.
+    
+    """
+    def set_quantity(self, quantity):
+        self._quantities.adjust_head(quantity)
+        return
+    """
+    get_quantity method returns the quantity of the stocks we purchased. 
+    
+    return value: int
+    """
+
+    def get_first_quantity_purchased(self):
+        return self._quantities.peek()
+
+    def get_total_shares(self):
+        return self._total_stocks
+
+    def remove_from_portfolio(self):
+        self._prices.dequeue()
+        self._total_stocks -= self._quantities.peek()
+        self._quantities.dequeue()
