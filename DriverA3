@@ -1,0 +1,90 @@
+import Stock
+import stock_queue
+import Price_Stack
+
+purchases = stock_queue.StockQueue()
+
+price_by_day = Price_Stack.PriceStack()
+
+portfolio = Stock.Stock()
+
+i = 0
+
+while i < 2:
+    buy_qt = int(input("How many stocks do you want to buy? "))
+
+    buy_price = int(input("What is the current price? "))
+    print("\n")
+
+    portfolio.purchase_stocks(buy_price, buy_qt)
+
+    price_by_day.push(buy_price)
+
+    i +=1
+
+sell_qt = int(input("How many stocks do you want to sell? "))
+
+sell_price = int(input("What is the current price of the stock? "))
+
+print("\n")
+
+price_by_day.push(sell_price)
+
+capital_gain = Price_Stack.PriceStack()
+
+while sell_qt > 0:
+
+    money_earned = 0
+
+    if sell_qt == portfolio.get_first_quantity_purchased():
+        print("Quantity in queue {}\n".format(portfolio.get_first_quantity_purchased()))
+
+        money_earned += portfolio.get_first_quantity_purchased() * (price_by_day.peek() - portfolio.get_first_price_paid())
+
+        if capital_gain.is_empty():
+            capital_gain.push(money_earned)
+        else:
+            capital_gain.push(capital_gain.peek()+money_earned)
+
+        sell_qt -= portfolio.get_first_quantity_purchased()
+
+        portfolio.remove_from_portfolio()
+
+        print("Capital gained ${}".format(capital_gain.peek()))
+
+        print("Remaining shares to sell {}\n".format(sell_qt))
+
+    elif sell_qt > portfolio.get_first_quantity_purchased():
+        print("Quantity in queue {}\n".format(portfolio.get_first_quantity_purchased()))
+        money_earned += portfolio.get_first_quantity_purchased() * (price_by_day.peek() - portfolio.get_first_price_paid())
+
+        if capital_gain.is_empty():
+            capital_gain.push(money_earned)
+        else:
+            capital_gain.push(capital_gain.peek()+money_earned)
+
+        sell_qt -= portfolio.get_first_quantity_purchased()
+        portfolio.remove_from_portfolio()
+
+        print("Capital gained ${}".format(capital_gain.peek()))
+
+        print("Remaining shares to sell {}\n".format(sell_qt))
+
+    else:
+        print("Quantity in queue {}\n".format(portfolio.get_first_quantity_purchased()))
+
+        money_earned += (portfolio.get_first_quantity_purchased() - (portfolio.get_first_quantity_purchased()-sell_qt)) * (price_by_day.peek() - portfolio.get_first_price_paid())
+
+        if capital_gain.is_empty():
+            capital_gain.push(money_earned)
+        else:
+            capital_gain.push(capital_gain.peek()+money_earned)
+
+        portfolio.set_quantity(portfolio.get_first_quantity_purchased() - sell_qt)
+
+        sell_qt = 0
+        print("Capital gained ${}".format(capital_gain.peek()))
+
+        print("Remaining shares to sell {}\n".format(sell_qt))
+
+        print("Remaining shares {}".format(portfolio.get_first_quantity_purchased()))
